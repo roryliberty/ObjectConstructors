@@ -12,7 +12,7 @@ function Book(title, author, pages, read) {
 }
 
 Book.prototype.info = function () {
-    console.log(this.title + " by " + this.author + ", " + this.pages + " pages, " + this.read);
+    return (this.title + " by " + this.author + ", " + this.pages + " pages, " + this.read);
 }
 
 const book1 = new Book("Poop is in Me", "Rory Liberty", 420, "currently reading");
