@@ -1,53 +1,48 @@
 let myLibrary = [];
-const bookContainer = document.getElementById("book-covers");
+let testBook;
 
+// Get things
+let modal = document.getElementById("myModal");
+let newBtn = document.getElementById("newBtn");
+let closeSpan = document.getElementsByClassName("close")[0];
+const submitBtn = document.querySelector('#submit');
+
+// Book constructor
 function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    if (read !== "read") {
-        read = "not yet read";
+    this.title = form.title.value;
+    this.author = form.author.value;
+    this.pages = form.pages.value;
+    this.read = form.read.checked;
+}
+
+// Functions
+function addBook() {
+    testBook = new Book(bookTitle, author, pages, read);
+    myLibrary.push(testBook);
+    generateLibrary();
+}
+
+function generateLibrary() {
+    for (let i = 0; i < myLibrary.length; i++) {
+        window.alert(myLibrary[i]);
     }
 }
 
-Book.prototype.info = function () {
-    return (this.title + " by " + this.author + ", " + this.pages + " pages, " + this.read);
-}
-
-const book1 = new Book("Poop is in Me", "Rory Liberty", 420, "currently reading");
-
-book1.info();
-
-function makeCovers(arr) {
-    for (i = 0; i < arr.length - 1; i++) {
-        const newDiv = document.createElement("div");
-        bookContainer.appendChild(newDiv);
-    }
-}
-
-// Get the modal
-var modal = document.getElementById("myModal");
-
-// Get the button that opens the modal
-var btn = document.getElementById("newBtn");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks on the button, open the modal
-btn.onclick = function () {
+// Event listeners and such
+newBtn.onclick = function () {
     modal.style.display = "block";
 }
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function () {
+closeSpan.onclick = function () {
     modal.style.display = "none";
 }
 
-// When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
 }
+
+// Add book when Submit button is clicked
+submitBtn.addEventListener('click', addBook());
+
